@@ -1,0 +1,93 @@
+
+@import './variables.css';
+@import './gantt.css';
+@import './cards.css';
+@import './forms.css';
+@import './dashboard.css';
+@import './projects.css';
+@import './projectDetail.css';
+@import './ganttView.css';
+@import './globalGanttView.css';
+@import './layout.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IDM Extension Blocker - Hide all IDM elements */
+[class*="idm"],
+[id*="idm"],
+[class*="dmldm"],
+[id*="dmldm"],
+div[style*="z-index: 2147483647"]:not(#root):not(#root *) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Enhanced app styling */
+body {
+  @apply bg-gradient-to-br from-gray-50 to-blue-50 text-slate-800;
+  font-family: var(--font-family);
+}
+
+/* Custom Tailwind components for legacy compatibility */
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all font-medium flex items-center justify-center gap-2 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all font-medium flex items-center justify-center gap-2 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all;
+  }
+  .input-field-green {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all;
+  }
+  .icon-container {
+    @apply w-10 h-10 rounded-lg flex items-center justify-center;
+  }
+  .icon-container-green {
+    @apply bg-green-600 text-white;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}

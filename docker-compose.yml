@@ -1,0 +1,134 @@
+# version: "3.8"
+services:
+  mongo:
+    image: mongo:4.4
+    container_name: spd_mongo
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    networks:
+      - spd-network
+    volumes:
+      # - mongo-data:/data/db
+      - ./mongo-db/data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    container_name: spd_backend
+    restart: unless-stopped
+    networks:
+      - spd-network
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/spd
+      - PORT=4000
+      - DISABLE_GRAPHQL=true
+      - ALLOWED_ORIGINS=https://localhost,http://localhost,http://localhost:3000,http://localhost:5173
+      - LOG_TO_FILE=true
+      - LOG_LEVEL=info
+      - TZ=Asia/Dhaka
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=gemini-2.0-flash-lite
+      - GEMINI_FALLBACK_TO_LOCAL=true
+      - GEMINI_CLI_TRUST_WORKSPACE=true
+    volumes:
+      - ./backend/logs:/app/logs
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  graphql:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    container_name: spd_graphql
+    restart: unless-stopped
+    networks:
+      - spd-network
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/spd
+      - PORT=4001
+      - GRAPHQL_ONLY=true
+      - ALLOWED_ORIGINS=https://localhost,http://localhost,http://localhost:3000,http://localhost:5173
+      - BACKEND_SERVICE_URL=http://backend:4000
+      - LOG_TO_FILE=true
+      - LOG_LEVEL=info
+      - TZ=Asia/Dhaka
+    volumes:
+      - ./backend/logs:/app/logs
+    depends_on:
+      mongo:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: development
+    container_name: spd_frontend
+    restart: unless-stopped
+    networks:
+      - spd-network
+    environment:
+      - VITE_API_BASE=/api
+      - VITE_GRAPHQL_URI=/graphql
+    depends_on:
+      - graphql
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: spd_nginx
+    restart: unless-stopped
+    networks:
+      - spd-network
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - graphql
+      - frontend
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  spd-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

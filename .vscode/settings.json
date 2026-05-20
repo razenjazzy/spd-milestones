@@ -1,0 +1,12 @@
+{
+  "js/ts.tsdk.path": "frontend/node_modules/typescript/lib",
+  "typescript.preferences.excludeCodeActionModuleSpecifierRange": "all",
+  "files.exclude": {
+    "gemini-cli/packages/cli/node_modules": true,
+    "gemini-cli/packages/core/node_modules": true
+  },
+  "search.exclude": {
+    "gemini-cli/packages/*/node_modules": true
+  },
+  "js/ts.tsserver.experimental.enableProjectDiagnostics": false
+}

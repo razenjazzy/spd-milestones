@@ -1,0 +1,268 @@
+/* Project Detail Page Styles */
+
+/* Header Section */
+.project-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.project-detail-back-button {
+  margin-right: 16px;
+}
+
+.project-detail-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.project-detail-view-gantt {
+  font-weight: 600;
+  padding: 8px 24px;
+}
+
+/* Add Milestone Form */
+.add-milestone-card {
+  margin-bottom: 32px;
+}
+
+.add-milestone-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.add-milestone-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.add-milestone-subtitle {
+  color: var(--text-secondary);
+}
+
+.color-picker {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+}
+
+.color-swatch-selected {
+  border: 3px solid var(--primary-color);
+}
+
+.color-swatch-unselected {
+  border: 2px solid #e5e7eb;
+}
+
+/* Milestones List */
+.milestones-section {
+  margin-bottom: 48px;
+}
+
+.milestones-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.milestones-title {
+  font-weight: 600;
+}
+
+.milestone-card {
+  height: 100%;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.milestone-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.milestone-card-dragging {
+  box-shadow: var(--shadow-lg);
+}
+
+.milestone-card-content {
+  padding: 24px;
+  padding-bottom: 16px;
+  position: relative;
+  min-height: 180px;
+}
+
+.milestone-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.milestone-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+.milestone-number-text {
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.milestone-title {
+  flex-grow: 1;
+  font-weight: 600;
+}
+
+.milestone-menu-button {
+  opacity: 0.7;
+}
+
+.milestone-menu-button:hover {
+  opacity: 1;
+}
+
+.milestone-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.milestone-complete-button {
+  margin-bottom: 16px;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 2;
+}
+
+.milestone-dates {
+  margin-bottom: 8px;
+}
+
+.milestone-icon {
+  font-size: 14px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Deleted Milestones */
+.deleted-milestones-card {
+  margin-top: 32px;
+  border: 1px dashed var(--error-color);
+}
+
+.deleted-milestones-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.deleted-milestone-card {
+  opacity: 0.7;
+  border: 1px solid var(--error-light);
+}
+
+.deleted-milestone-content {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deleted-milestone-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.deleted-milestone-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dialogs */
+.dialog-content {
+  margin-top: 8px;
+}
+
+.dialog-subtitle {
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+}
+
+.dialog-actions {
+  padding: 16px 24px;
+}
+
+/* Status Dialog */
+.status-dialog-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status-button {
+  justify-content: flex-start;
+  text-transform: none;
+}
+
+.status-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .add-milestone-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .milestone-card-content {
+    min-height: auto;
+  }
+  
+  .milestone-complete-button {
+    position: static;
+    width: 100%;
+    margin-top: 16px;
+  }
+}

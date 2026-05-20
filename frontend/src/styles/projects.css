@@ -1,0 +1,153 @@
+/* Projects Page Styles */
+
+/* Header Section */
+.projects-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.projects-header-text {
+  flex-grow: 1;
+}
+
+.projects-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.projects-subtitle {
+  color: var(--text-secondary);
+}
+
+.projects-create-button {
+  font-weight: 600;
+}
+
+/* Stats Cards */
+.projects-stats {
+  margin-bottom: 32px;
+}
+
+/* Filters Section */
+.projects-filters {
+  margin-bottom: 32px;
+}
+
+.projects-filters-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.projects-search {
+  flex-grow: 1;
+  min-width: 250px;
+}
+
+.projects-filter-select {
+  min-width: 150px;
+}
+
+.projects-sort-select {
+  min-width: 180px;
+}
+
+.projects-results-count {
+  color: var(--text-secondary);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Project Sections */
+.projects-section {
+  margin-bottom: 48px;
+}
+
+.projects-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.projects-section-title {
+  font-weight: 600;
+}
+
+.projects-section-count {
+  font-weight: 500;
+}
+
+/* Project Grid */
+.projects-grid {
+  margin-top: 16px;
+}
+
+/* Empty State */
+.projects-empty {
+  text-align: center;
+  padding: 64px 32px;
+}
+
+.projects-empty-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.projects-empty-message {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+/* Dialogs */
+.projects-dialog-content {
+  margin-top: 8px;
+}
+
+.projects-dialog-actions {
+  padding: 16px 24px;
+}
+
+/* Loading */
+.projects-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .projects-create-button {
+    width: 100%;
+  }
+  
+  .projects-filters-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .projects-search,
+  .projects-filter-select,
+  .projects-sort-select {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,60 @@
+services:
+  # REST API Backend
+  - type: web
+    name: spd-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    dockerCommand: node dist/server.js
+    plan: free
+    region: oregon
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false          # Set this in the Render dashboard
+      - key: FRONTEND_URL
+        value: https://frontend-henna-kappa-pg90tadms4.vercel.app
+      - key: DISABLE_GRAPHQL
+        value: "true"
+      - key: LOG_TO_FILE
+        value: "false"       # Free tier has no persistent disk
+      - key: LOG_LEVEL
+        value: info
+      - key: ALLOWED_ORIGINS
+        value: https://frontend-henna-kappa-pg90tadms4.vercel.app,https://spdmilestones-qlxsiplio-razenjazzys-projects.vercel.app,http://localhost:5173
+      - key: ADMIN_LINK_REVALIDATION_PASSWORD
+        sync: false
+      - key: TZ
+        value: Asia/Dhaka
+
+  # GraphQL Service
+  - type: web
+    name: spd-graphql
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    dockerCommand: node dist/server.js
+    plan: free
+    region: oregon
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false          # Set this in the Render dashboard
+      - key: FRONTEND_URL
+        value: https://frontend-henna-kappa-pg90tadms4.vercel.app
+      - key: GRAPHQL_ONLY
+        value: "true"
+      - key: BACKEND_SERVICE_URL
+        sync: false          # Set to: https://spd-backend.onrender.com
+      - key: LOG_TO_FILE
+        value: "false"
+      - key: LOG_LEVEL
+        value: info
+      - key: ALLOWED_ORIGINS
+        value: https://frontend-henna-kappa-pg90tadms4.vercel.app,https://spdmilestones-qlxsiplio-razenjazzys-projects.vercel.app,http://localhost:5173
+      - key: ADMIN_LINK_REVALIDATION_PASSWORD
+        sync: false
+      - key: TZ
+        value: Asia/Dhaka

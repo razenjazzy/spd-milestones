@@ -1,0 +1,141 @@
+/* Gantt View Page Styles */
+
+/* Header Section */
+.gantt-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.gantt-view-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gantt-view-back-button {
+  color: var(--primary-color);
+}
+
+.gantt-view-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.gantt-view-project-name {
+  color: var(--text-secondary);
+}
+
+.gantt-view-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gantt-view-filter {
+  min-width: 120px;
+}
+
+.gantt-view-action-button {
+  color: var(--primary-color);
+}
+
+/* Stats Section */
+.gantt-view-stats {
+  margin-bottom: 32px;
+}
+
+/* Timeline Section */
+.gantt-view-timeline-header {
+  margin-bottom: 16px;
+}
+
+.gantt-view-timeline-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.gantt-view-timeline-subtitle {
+  color: var(--text-secondary);
+}
+
+.gantt-view-chart-card {
+  margin-bottom: 32px;
+}
+
+.gantt-view-chart-container {
+  padding: 0;
+  overflow-x: auto;
+}
+
+/* Legend Section */
+.gantt-view-legend-card {
+  margin-bottom: 32px;
+}
+
+.gantt-view-legend-content {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.gantt-view-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gantt-view-legend-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.gantt-view-legend-box-today {
+  background-color: var(--warning-color);
+  border: 2px dashed var(--warning-dark);
+}
+
+.gantt-view-legend-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Loading State */
+.gantt-view-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .gantt-view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .gantt-view-header-right {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .gantt-view-filter {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .gantt-view-legend-content {
+    gap: 16px;
+  }
+  
+  .gantt-view-legend-item {
+    width: 100%;
+  }
+}

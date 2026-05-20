@@ -1,0 +1,150 @@
+/* Card Components Styles */
+@import './variables.css';
+
+/* Base Card Styles */
+.card {
+  background: var(--bg-paper);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  border-color: var(--color-primary);
+}
+
+.card-gradient-green {
+  background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
+  border-color: var(--color-secondary);
+}
+
+/* Project Card Specific */
+.project-card {
+  @extend .card;
+  padding: var(--spacing-lg);
+  cursor: pointer;
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.project-card-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.project-card-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* Milestone Card Specific */
+.milestone-card {
+  @extend .card;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.milestone-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.milestone-status-chip {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.milestone-status-chip.pending {
+  background-color: var(--status-pending);
+  color: var(--color-white);
+}
+
+.milestone-status-chip.in-progress {
+  background-color: var(--status-in-progress);
+  color: var(--color-white);
+}
+
+.milestone-status-chip.completed {
+  background-color: var(--status-completed);
+  color: var(--color-white);
+}
+
+/* Stat Card Specific */
+.stat-card {
+  @extend .card;
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.stat-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-md);
+}
+
+.stat-card-value {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat-card-label {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Empty State Card */
+.empty-state-card {
+  @extend .card;
+  padding: var(--spacing-xxl);
+  text-align: center;
+  border: 2px dashed var(--border-default);
+  background: var(--color-gray-50);
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.empty-state-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state-description {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+}

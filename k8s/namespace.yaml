@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: spd-milestones
+  labels:
+    name: spd-milestones
+    app: spd-milestones

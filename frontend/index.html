@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPD Milestones</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- Prevent IDM from detecting videos -->
+    <meta name="robots" content="noarchive" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!-- CSP to prevent external script injection while allowing API connections -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; media-src 'self' data:; connect-src 'self' ws: wss: http://localhost https://spd.milestones http://spd.milestones;" />
+    <script>
+      // IDM Extension Blocker - Removes IDM download prompts
+      (function() {
+        'use strict';
+        
+        // Remove IDM elements immediately
+        function removeIDMElements() {
+          // IDM class patterns
+          const idmSelectors = [
+            '[class*="idm"]',
+            '[id*="idm"]',
+            '[class*="dmldm"]',
+            '[id*="dmldm"]',
+            'div[style*="z-index: 2147483647"]', // IDM's common z-index
+            'div[style*="position: fixed"][style*="top: 0"]'
+          ];
+          
+          idmSelectors.forEach(selector => {
+            try {
+              document.querySelectorAll(selector).forEach(el => {
+                if (el.id !== 'root' && !el.closest('#root')) {
+                  el.remove();
+                }
+              });
+            } catch (e) {}
+          });
+        }
+        
+        // Run immediately
+        removeIDMElements();
+        
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', removeIDMElements);
+        }
+        
+        // Observe for new IDM elements
+        const observer = new MutationObserver(mutations => {
+          mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+              if (node.nodeType === 1) { // Element node
+                const el = node;
+                const className = el.className || '';
+                const id = el.id || '';
+                
+                // Check if it's an IDM element
+                if (
+                  className.toString().toLowerCase().includes('idm') ||
+                  className.toString().toLowerCase().includes('dmldm') ||
+                  id.toString().toLowerCase().includes('idm') ||
+                  id.toString().toLowerCase().includes('dmldm') ||
+                  (el.style && el.style.zIndex === '2147483647')
+                ) {
+                  if (el.id !== 'root' && !el.closest('#root')) {
+                    el.remove();
+                  }
+                }
+              }
+            });
+          });
+        });
+        
+        // Start observing
+        observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="src/main.tsx"></script>
+  </body>
+</html>

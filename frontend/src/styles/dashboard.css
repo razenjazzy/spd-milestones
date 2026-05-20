@@ -1,0 +1,114 @@
+/* Dashboard Page Styles */
+
+/* Header Section */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.dashboard-title {
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dashboard-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Stats Section */
+.dashboard-stats {
+  margin-bottom: 48px;
+}
+
+/* Create Project Form */
+.create-project-card {
+  margin-bottom: 48px;
+}
+
+.create-project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.create-project-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.create-project-subtitle {
+  color: var(--text-secondary);
+}
+
+.create-project-button {
+  height: 56px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.create-project-button:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Projects Grid */
+.projects-grid {
+  margin-bottom: 32px;
+}
+
+/* Empty State */
+.dashboard-empty {
+  text-align: center;
+  padding: 64px 32px;
+}
+
+.dashboard-empty-icon {
+  font-size: 64px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.dashboard-empty-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.dashboard-empty-description {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+/* Loading State */
+.dashboard-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-header {
+    margin-bottom: 32px;
+  }
+  
+  .dashboard-stats {
+    margin-bottom: 32px;
+  }
+  
+  .create-project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .create-project-button {
+    width: 100%;
+  }
+}

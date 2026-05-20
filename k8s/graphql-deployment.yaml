@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql
+  namespace: spd-milestones
+  labels:
+    app: graphql
+    tier: api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: graphql
+  template:
+    metadata:
+      labels:
+        app: graphql
+        tier: api
+    spec:
+      containers:
+      - name: graphql
+        image: spd-milestones-graphql:latest
+        imagePullPolicy: Never  # Use local image built by Docker
+        ports:
+        - containerPort: 4001
+          name: http
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: MONGO_URI
+          value: "mongodb://mongodb:27017/spd"
+        - name: PORT
+          value: "4001"
+        - name: GRAPHQL_ONLY
+          value: "true"
+        - name: BACKEND_SERVICE_URL
+          value: "http://backend:4000"
+        - name: LOG_TO_FILE
+          value: "false"
+        - name: LOG_LEVEL
+          value: "debug"
+        - name: TZ
+          value: "Asia/Dhaka"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 4001
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 4001
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphql
+  namespace: spd-milestones
+  labels:
+    app: graphql
+spec:
+  type: ClusterIP
+  ports:
+  - port: 4001
+    targetPort: 4001
+    protocol: TCP
+    name: http
+  selector:
+    app: graphql
