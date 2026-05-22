@@ -56,8 +56,8 @@ const environments: Record<string, Partial<EnvironmentConfig>> = {
   },
   
   production: {
-    API_BASE: import.meta.env.VITE_API_BASE || '/api',
-    GRAPHQL_URI: import.meta.env.VITE_GRAPHQL_URI || '/graphql',
+    API_BASE: import.meta.env.VITE_API_BASE || 'https://spd-backend-nyzi.onrender.com/api',
+    GRAPHQL_URI: import.meta.env.VITE_GRAPHQL_URI || 'https://spd-backend-nyzi.onrender.com/graphql',
     NODE_ENV: 'production',
     ENABLE_DEV_TOOLS: false,
     LOG_LEVEL: 'error',
