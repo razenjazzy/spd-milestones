@@ -1,8 +1,10 @@
 {
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://spd-backend-nyzi.onrender.com/api/$1" },
-    { "source": "/graphql", "destination": "https://spd-backend-nyzi.onrender.com/graphql" },
-    { "source": "/graphql/(.*)", "destination": "https://spd-backend-nyzi.onrender.com/graphql/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "version": 2,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "https://spd-backend-nyzi.onrender.com/api/$1" },
+    { "src": "/graphql", "dest": "https://spd-backend-nyzi.onrender.com/graphql" },
+    { "src": "/graphql/(.*)", "dest": "https://spd-backend-nyzi.onrender.com/graphql/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
