@@ -1,5 +1,8 @@
 {
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://spd-backend-nyzi.onrender.com/api/$1" },
+    { "source": "/graphql", "destination": "https://spd-backend-nyzi.onrender.com/graphql" },
+    { "source": "/graphql/(.*)", "destination": "https://spd-backend-nyzi.onrender.com/graphql/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

@@ -110,7 +110,7 @@ export const config: EnvironmentConfig = {
   corsEnabled: getEnvBoolean('CORS_ENABLED', true),
   rateLimitWindowMs: getEnvNumber('RATE_LIMIT_WINDOW_MS', 15 * 60 * 1000), // 15 minutes
   rateLimitMaxRequests: getEnvNumber('RATE_LIMIT_MAX_REQUESTS', 100),
-  jwtSecret: getEnv('JWT_SECRET', 'your-super-secret-jwt-key-change-in-production'),
+  jwtSecret: getEnv('JWT_SECRET', ''),
   jwtExpiresIn: getEnv('JWT_EXPIRES_IN', '7d'),
   adminRegistrationKey: getEnv('ADMIN_REGISTRATION_KEY', ''),
   adminLinkRevalidationPassword: getEnv('ADMIN_LINK_REVALIDATION_PASSWORD', ''),

@@ -56,8 +56,8 @@ const environments: Record<string, Partial<EnvironmentConfig>> = {
   },
   
   production: {
-    API_BASE: import.meta.env.VITE_API_BASE || 'https://api.spdmilestones.com',
-    GRAPHQL_URI: import.meta.env.VITE_GRAPHQL_URI || 'https://api.spdmilestones.com/graphql',
+    API_BASE: import.meta.env.VITE_API_BASE || '/api',
+    GRAPHQL_URI: import.meta.env.VITE_GRAPHQL_URI || '/graphql',
     NODE_ENV: 'production',
     ENABLE_DEV_TOOLS: false,
     LOG_LEVEL: 'error',
