@@ -372,29 +372,29 @@ export default function Releases() {
           <Card>
             <CardContent sx={{ p: 0 }}>
               <TableContainer sx={{ width: '100%', overflowX: 'auto' }}>
-              <Table size="small" sx={{ minWidth: 900 }}>
+              <Table size="small" sx={{ minWidth: 760, tableLayout: 'fixed' }}>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Release/Package</TableCell>
+                    <TableCell sx={{ width: 220 }}>Release/Package</TableCell>
                     <TableCell>Status</TableCell>
                     <TableCell>Type</TableCell>
                     <TableCell>Received</TableCell>
                     <TableCell>Staging</TableCell>
                     <TableCell>Live</TableCell>
-                    <TableCell>Comments</TableCell>
+                    <TableCell sx={{ width: 170 }}>Comments</TableCell>
                     <TableCell align="right">Actions</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {releases.map((r) => (
                     <TableRow key={r._id}>
-                      <TableCell>{r.releasePackage}</TableCell>
+                      <TableCell sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={r.releasePackage}>{r.releasePackage}</TableCell>
                       <TableCell sx={{ textTransform: "capitalize" }}>{r.status}</TableCell>
                       <TableCell>{r.type}</TableCell>
-                      <TableCell>{r.received ? format(new Date(r.received), "EEEE, MMM d, yyyy") : ""}</TableCell>
+                      <TableCell>{r.received ? format(new Date(r.received), "d-MMM-yy") : ""}</TableCell>
                       <TableCell>{r.staging ? format(new Date(r.staging), "d-MMM-yy") : ""}</TableCell>
                       <TableCell>{r.live ? format(new Date(r.live), "d-MMM-yy") : "???"}</TableCell>
-                      <TableCell>{r.comments || ""}</TableCell>
+                      <TableCell sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={r.comments || ""}>{r.comments || ""}</TableCell>
                       <TableCell align="right">
                         <Stack direction="row" spacing={0.5} useFlexGap flexWrap="wrap" justifyContent="flex-end">
                           {r.downloadLink && <Button size="small" onClick={() => openArtifact(r._id, "downloadLink")}>Link</Button>}
