@@ -1,0 +1,33 @@
+{
+  "excel": "/Users/Razen/Downloads/Home/Release Tracker 2026 - 07 May 2026.xlsx",
+  "sheetRowCounts": {
+    "Release Pipeline": 22,
+    "Release 2026": 94,
+    "Activity Log": 160,
+    "Security Fixes": 31,
+    "Release 2025": 236,
+    "Activity 2025": 339,
+    "2024": 113,
+    "2022-23": 207,
+    "NPSB Daywise ": 60
+  },
+  "generated": {
+    "releaseRows": 630,
+    "activityRows": 437,
+    "securityRows": 30
+  },
+  "skipped": {
+    "release": 20,
+    "activity": 62,
+    "security": 1,
+    "unknownSheets": [
+      "NPSB Daywise ",
+      "Release Pipeline"
+    ]
+  },
+  "outputs": {
+    "mongoshScript": "scripts/generated/import_release_tracker.mongosh.js",
+    "report": "scripts/generated/import_release_tracker.report.json",
+    "data": "scripts/generated/import_release_tracker.data.json"
+  }
+}

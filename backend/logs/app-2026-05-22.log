@@ -1,0 +1,15 @@
+[2026-05-22T04:08:12.222Z] [INFO] Starting SPD Milestones Full Stack API | {"port":4000,"environment":"production","mongoUri":"mongodb+srv://*****:*****@m0.jroy2sh.mongodb.net/spd?retryWrites=true&w=majority&appName=M0","monitoringInterval":"60 minutes","graphqlPath":"/graphql","mode":"Full Stack API"}
+[2026-05-22T04:08:12.725Z] [INFO] MongoDB connected successfully | {"uri":"m0.jroy2sh.mongodb.net/spd?retryWrites=true&w=majority&appName=M0"}
+[2026-05-22T04:08:12.755Z] [INFO] 🚀 SPD Milestones API started | {"port":4000,"environment":"production","apiUrl":"http://localhost:4000","graphqlUrl":"http://localhost:4000/graphql"}
+[2026-05-22T04:08:12.755Z] [INFO] Starting project monitoring | {"intervalMinutes":60}
+[2026-05-22T04:08:12.755Z] [DEBUG] Service [MonitoringService]: Generating monitoring report
+[2026-05-22T04:08:12.756Z] [INFO] Project monitoring scheduler started | {"checkInterval":"60 minutes"}
+[2026-05-22T04:08:13.289Z] [INFO] Monitoring report generated | {"totalProjects":0,"critical":0,"warning":0,"healthy":0}
+[2026-05-22T04:08:36.781Z] [INFO] HTTP GET /health | {"method":"GET","url":"/health"}
+[2026-05-22T04:08:36.781Z] [DEBUG] Request details | {"method":"GET","path":"/health","query":{},"body":{},"ip":"::1","userAgent":"curl/8.7.1"}
+[2026-05-22T04:08:36.781Z] [DEBUG] Health check requested
+[2026-05-22T04:08:36.781Z] [INFO] HTTP GET /health | {"method":"GET","url":"/health","statusCode":200}
+[2026-05-22T04:08:36.789Z] [INFO] HTTP GET /api/health | {"method":"GET","url":"/api/health"}
+[2026-05-22T04:08:36.789Z] [DEBUG] Request details | {"method":"GET","path":"/api/health","query":{},"body":{},"ip":"::1","userAgent":"curl/8.7.1"}
+[2026-05-22T04:08:36.789Z] [DEBUG] API health check requested
+[2026-05-22T04:08:36.789Z] [INFO] HTTP GET /api/health | {"method":"GET","url":"/api/health","statusCode":200}
